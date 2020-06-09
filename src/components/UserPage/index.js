@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 import baseUrl from '../../constants';
 import UserList from '../UserList';
 
@@ -10,8 +11,12 @@ class UserPage extends Component {
         users: []
     }
 
-    componentDidMount() {
-        fetch(baseUrl + '?seed=abc&results=50&inc=picture,name,nat,location,email,cell,phone,login', {
+    hasMore = () => {
+        return this.state.users.length < 1000;
+    }
+
+    loadFunc = (page) => {
+        fetch(baseUrl + '?page=' + page + '&seed=abc&results=50&inc=picture,name,nat,location,email,cell,phone,login', {
             method: 'GET',
         })
         .then((response) => response.json())
@@ -21,7 +26,16 @@ class UserPage extends Component {
     }
 
     render() {
-        return this.state.users.length > 0 ? <UserList users={this.state.users}/> : null;
+        return <>
+            <InfiniteScroll
+                pageStart={1}
+                loadMore={this.loadFunc}
+                hasMore={this.hasMore()}
+                loader={<div className="loader" key={0}>Loading...</div>}
+            >
+                {this.state.users.length > 0 ? <UserList users={this.state.users}/> : ''}
+            </InfiniteScroll>
+        </>
     }
 }
 
