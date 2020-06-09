@@ -2,6 +2,10 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+/**
+ * Entry point to the application
+ * @return {Element}
+*/
 function App() {
   return (
     <div className="App">
