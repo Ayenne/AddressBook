@@ -1,4 +1,24 @@
-.loader {
-    text-align: center;
-    padding: 30px;
+.loader-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+
+    .loader {
+        border: 2px solid darkgray;
+        border-top: 2px solid black;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .loader-text {
+        padding: 10px 20px;
+    }
 }

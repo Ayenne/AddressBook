@@ -44,7 +44,12 @@ class UserPage extends Component {
                 pageStart={1}
                 loadMore={this.loadFunc}
                 hasMore={this.hasMore()}
-                loader={<div className="loader" key={0}>Loading...</div>}
+                threshold={0}
+                loader={
+                    <div className='loader-wrapper'>
+                        <div className="loader" key={0}></div>
+                        <div className='loader-text'>Loading...</div>
+                    </div>}
             >
                 {this.state.users.length > 0 ? <UserList users={filteredUsers}/> : ''}
             </InfiniteScroll>
