@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import baseUrl from '../../constants';
+import Search from '../Search';
 import UserList from '../UserList';
+import applySearch from './helpers';
 import './style.scss';
 
 /**
@@ -9,7 +11,8 @@ import './style.scss';
 */
 class UserPage extends Component {
     state = {
-        users: []
+        users: [],
+        query: '',
     }
 
     hasMore = () => {
@@ -26,15 +29,21 @@ class UserPage extends Component {
         });
     }
 
+    changeQuery = (text) => {
+        this.setState({query: text})
+    }
+
     render() {
+        const filteredUsers = applySearch(this.state.users, this.state.query);
         return <>
+            <Search handleChange={this.changeQuery} />
             <InfiniteScroll
                 pageStart={1}
                 loadMore={this.loadFunc}
                 hasMore={this.hasMore()}
                 loader={<div className="loader" key={0}>Loading...</div>}
             >
-                {this.state.users.length > 0 ? <UserList users={this.state.users}/> : ''}
+                {this.state.users.length > 0 ? <UserList users={filteredUsers}/> : ''}
             </InfiniteScroll>
         </>
     }
