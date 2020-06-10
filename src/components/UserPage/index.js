@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import baseUrl from '../../constants';
 import UserList from '../UserList';
+import './style.scss';
 
 /**
  * Component responsible for rendering the page listing users.

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import UserCard from '../UserCard';
 import PropTypes from 'prop-types';
+import './style.scss';
 
 /**
  * Renders list of users.
@@ -9,7 +10,7 @@ import PropTypes from 'prop-types';
 class UserList extends Component {
   render() {
     return <>
-      <div role='user-list'>
+      <div className="cards" role='user-list'>
         {this.props.users.map((user, i) => {
           return <UserCard key={i} user={user}/>;
         })}
