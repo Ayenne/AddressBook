@@ -1,0 +1,17 @@
+.navigation-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0px 112px;
+    border-bottom: 1px  rgba(0,0,0,0.1) solid;
+
+    h1 {
+        font-size: 30px;
+        font-weight: normal;
+    }
+
+    .link-nav {
+        color: black;
+    }
+}

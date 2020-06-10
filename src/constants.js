@@ -1,3 +1,8 @@
-const baseUrl = 'https://randomuser.me/api/';
+export const baseUrl = 'https://randomuser.me/api/';
 
-export default baseUrl;
+export const nationalities = {
+  CH: 'ch',
+  ES: 'es',
+  FR: 'fr',
+  GB: 'gb',
+};

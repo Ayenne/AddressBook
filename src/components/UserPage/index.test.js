@@ -1,4 +1,7 @@
 import React from 'react';
+import {Provider} from 'react-redux';
+import configureStore from 'redux-mock-store';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import {render, screen} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
@@ -31,13 +34,26 @@ const server = setupServer(
     }),
 );
 
+let store;
+const mockStore = configureStore([]);
+
 beforeAll(() => server.listen());
+beforeEach(() => {
+  store = mockStore({
+    myState: 'sample text',
+  });
+});
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-
 test('Displays loading message', async () => {
-  render(<UserPage />);
+  render(
+      <Router>
+        <Provider store={store}>
+          <UserPage />
+        </Provider>
+      </Router>,
+  );
   expect(screen.getByText('Loading...')).toBeInTheDocument();
 });
 

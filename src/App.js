@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import UserPage from './components/UserPage';
+import Settings from './components/Settings';
 import './App.scss';
 
 /**
@@ -11,7 +12,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path='/' component={UserPage} />
+        <Route exact path='/' component={UserPage} />
+        <Route path='/settings' component={Settings} />
       </Switch>
     </Router>
   );
