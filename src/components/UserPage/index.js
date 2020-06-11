@@ -17,8 +17,10 @@ class UserPage extends Component {
         users: [],
         query: '',
     }
+    maxUsers = 1000;
+
     hasMore = () => {
-        return this.state.users.length < 1000;
+        return this.state.users.length < this.maxUsers && this.state.query === '';
     }
 
     loadFunc = (page) => {
@@ -34,6 +36,15 @@ class UserPage extends Component {
 
     changeQuery = (text) => {
         this.setState({query: text})
+    }
+
+    endMessage = () => {
+        if (this.state.users.length >= this.maxUsers) {
+            return <div className="end-catalog">End of users catalog</div>
+        } else if (this.state.query !== '') {
+            return <div className="end-catalog"> Loading is stopped while the search is active.</div>
+        }
+        return null;
     }
 
     render() {
@@ -56,7 +67,7 @@ class UserPage extends Component {
             >
                 {this.state.users.length > 0 ? <UserList users={filteredUsers}/> : ''}
             </InfiniteScroll>
-            {this.hasMore() ? null : <div className="end-catalog">End of users catalog</div>}
+            {this.endMessage()}
         </>
     }
 }
