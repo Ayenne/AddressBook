@@ -56,6 +56,7 @@ class UserPage extends Component {
             >
                 {this.state.users.length > 0 ? <UserList users={filteredUsers}/> : ''}
             </InfiniteScroll>
+            {this.hasMore() ? null : <div className="end-catalog">End of users catalog</div>}
         </>
     }
 }
