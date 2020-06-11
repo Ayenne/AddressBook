@@ -6,6 +6,7 @@ import UserList from '../UserList';
 import Navigation from '../Navigation';
 import applySearch from './helpers';
 import {connect} from "react-redux";
+import {Link} from 'react-router-dom';
 import './style.scss';
 
 /**
@@ -40,11 +41,13 @@ class UserPage extends Component {
         return <>
             <Navigation />
             <Search handleChange={this.changeQuery} />
+            <div className='current-nat'>
+                <Link className='nat-text' to='/settings/'>Browsing nationality of users: {this.props.nationality.toUpperCase()}</Link>
+            </div>
             <InfiniteScroll
                 pageStart={1}
                 loadMore={this.loadFunc}
                 hasMore={this.hasMore()}
-                threshold={0}
                 loader={
                     <div className='loader-wrapper'>
                         <div className="loader" key={0}></div>

@@ -40,7 +40,7 @@ const mockStore = configureStore([]);
 beforeAll(() => server.listen());
 beforeEach(() => {
   store = mockStore({
-    myState: 'sample text',
+    nationality: 'ch',
   });
 });
 afterEach(() => server.resetHandlers());

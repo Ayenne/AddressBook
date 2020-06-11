@@ -6,9 +6,9 @@ class Navigation extends Component {
   render() {
     return <>
       <div className='navigation-bar'>
-        <h1>Adress Book</h1>
+        <Link className='link-address' to='/'>Adress Book</Link>
         <div className='settings'>
-          <Link className='link-nav' to='/settings/'>Settings</Link>
+          <Link className='link-settings' to='/settings/'>Settings</Link>
         </div>
       </div>
     </>;
