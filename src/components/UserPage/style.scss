@@ -1,3 +1,5 @@
+@import '../../styles/globalStyle';
+
 .loader-wrapper {
     display: flex;
     align-items: center;
@@ -28,7 +30,7 @@
     padding: 20px 112px 0px;
 
     .nat-text {
-        color: black;
+        color: $text-color;
     }
 }
 
